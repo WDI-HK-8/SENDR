@@ -12,6 +12,6 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
     })
 
   $authProvider.configure({
-    apiUrl: 'http://localhost:3000'
+    apiUrl: "<%= ENV['URL'] || 'http://localhost:3000' %>"
   })
 }]);

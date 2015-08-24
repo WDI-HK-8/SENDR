@@ -17,5 +17,3 @@ test:
   database: sendr_test
 
 production:
-  <<: *default
-  database: db/production.sqlite3

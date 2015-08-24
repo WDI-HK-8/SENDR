@@ -41,7 +41,7 @@ Rails.application.configure do
 
 
 
-  config.action_mailer.default_url_options = {:host => 'project-sendr.herokuapp.com'}
+  config.action_mailer.default_url_options = {:host => 'localhost:3000'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
@@ -52,10 +52,10 @@ Rails.application.configure do
     :user_name => "xpp@me.com",
     :password  => "hj1ybw_z9LxpxxKHDggwgQ", # SMTP password is any valid API key
     :authentication => 'plain', # Mandrill supports 'plain' or 'login'
-    :domain => 'project-sendr.herokuapp.com', # your domain to identify your server when connecting
+    # :domain => 'project-sendr.herokuapp.com', # your domain to identify your server when connecting
   }
 
-  
+
 # THIS WORKS
   # config.action_mailer.default_url_options = {:host => 'localhost:3000'}
   # config.action_mailer.delivery_method = :smtp

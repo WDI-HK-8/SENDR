@@ -1,5 +1,8 @@
 {
-  "name" : "sendr",
+  "name": "sendr",
   "version": "0.0.1",
-  "dependencies": {}
+  "dependencies": {
+    "angular": "~1.4.4",
+    "angular-route": "~1.4.4"
+  }
 }

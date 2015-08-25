@@ -1,7 +1,7 @@
 class EmailsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @emails = current_user.emails.all
+    @emails = current_user.emails.where(visible: true)
   end
 
   def create

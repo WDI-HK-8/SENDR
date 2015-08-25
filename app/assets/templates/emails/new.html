@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <h1>Create A New Email</h1>
+
+    <form ng-submit="form.create()">
+      <div class="form-group">
+        <label>To</label>
+        <input type="text" class="form-control" placeholder="Enter content" ng-model="email.to">
+      </div>
+      <div class="form-group">
+        <label>From</label>
+        <input type="text" class="form-control" placeholder="Enter content" ng-model="email.from">
+      </div>
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" placeholder="Enter title" ng-model="email.title">
+      </div>
+      <div class="form-group">
+        <label>Content</label>
+        <input type="text" class="form-control" placeholder="Enter content" ng-model="email.content">
+      </div>
+      <div class="form-group">
+        <label>Schedule</label>
+        <input type="text" class="form-control" placeholder="Enter content" ng-model="email.schedule">
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" value="" ng-model="email.visible">Visible</label>
+      </div>
+
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+</div>

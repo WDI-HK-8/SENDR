@@ -6,7 +6,7 @@ class CreateEmails < ActiveRecord::Migration
       t.string   "to"       #  serialize in model
       t.datetime "schedule"
       t.text     "content"
-      t.boolean  "is_sent"
+      t.boolean  "is_sent", default: false
       t.boolean  "visible"
       t.timestamps null: false
     end

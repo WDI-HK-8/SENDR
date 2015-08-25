@@ -1,0 +1,17 @@
+app.controller('EmailsNewCtrl', ['$scope', '$http', function($scope, $http){
+
+  var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
+
+  $scope.email = {};
+  $scope.form = {};
+
+  $scope.form.create = function(){
+    var data = {
+      email: $scope.email
+    };
+
+    $http.post(url + '/emails', data).success(function(response){
+      console.log(response);
+    });
+  };
+}]);

@@ -1,0 +1,9 @@
+app.controller('EmailsIndexCtrl', ['$scope', '$http', '$location', function($scope, $http, $location){
+
+  var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
+
+  $http.get(url + '/emails').success(function(response){
+    console.log(response);
+    $scope.emails = response;
+  });
+}]);

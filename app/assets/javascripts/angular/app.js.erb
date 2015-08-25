@@ -13,6 +13,14 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
     when('/login', {
       templateUrl: "<%= asset_path('auth/login.html') %>",
       controller: 'LoginCtrl'
+    }).
+    when('/emails', {
+      templateUrl: "<%= asset_path('emails/index.html') %>",
+      controller: 'EmailsIndexCtrl'
+    }).
+    when('/new_emails', {
+      templateUrl: "<%= asset_path('emails/new.html') %>",
+      controller: 'EmailsNewCtrl'
     })
 
   $authProvider.configure({

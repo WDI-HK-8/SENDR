@@ -1,9 +1,29 @@
-var app = angular.module('sendr', ['ngRoute']);
+var app = angular.module('sendr', ['ngRoute', 'ng-token-auth']);
 
-app.config(['$routeProvider', function($routeProvider) {
+app.config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider) {
   $routeProvider.
     when('/', {
       templateUrl: "<%= asset_path('static_pages/index.html') %>",
       controller: 'StaticPagesCtrl'
+    }).
+    when('/signup', {
+      templateUrl: "<%= asset_path('auth/signup.html') %>",
+      controller: 'SignUpCtrl'
+    }).
+    when('/login', {
+      templateUrl: "<%= asset_path('auth/login.html') %>",
+      controller: 'LoginCtrl'
+    }).
+    when('/emails', {
+      templateUrl: "<%= asset_path('emails/index.html') %>",
+      controller: 'EmailsIndexCtrl'
+    }).
+    when('/new_emails', {
+      templateUrl: "<%= asset_path('emails/new.html') %>",
+      controller: 'EmailsNewCtrl'
     })
+
+  $authProvider.configure({
+    apiUrl: "<%= ENV['URL'] || 'http://localhost:3000' %>"
+  })
 }]);

@@ -9,6 +9,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'unicorn'
 gem 'rails_12factor', group: :production
 gem 'bower'
+gem 'devise_token_auth'
+gem 'omniauth'
+gem 'dotenv-rails', :groups => [:development, :test]
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'active_hash'
 

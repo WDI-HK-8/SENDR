@@ -1,13 +1,16 @@
 class EmailsController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @emails = Email.all
+    @emails = current_user.emails.all
   end
 
   def create
-    @email = Email.new(post_params)
+    hash = post_params()
+    hash[:from] = current_user.uid
+    @email = current_user.emails.new(hash)
 
     if @email.save
-      # render success in Jbuilder
+      MainMailer.send_email(@email).deliver_now
     else
       render json: { message: "400 Bad Request" }, status: :bad_request
     end
@@ -48,6 +51,6 @@ class EmailsController < ApplicationController
   private
 
   def post_params
-    params.require(:email).permit(:title, :from, :to, :schedule, :content, :is_sent, :visible)
+    params.require(:email).permit(:title, :to, :schedule, :content, :is_sent, :visible)
   end
 end

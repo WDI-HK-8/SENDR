@@ -7,4 +7,13 @@ app.controller('StaticPagesCtrl', ['$scope', '$auth', function($scope, $auth){
       console.log(resp);
     });
   };
+  $(document).ready(function(){
+    //login modal
+    $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
+    $("#signupBtn").click(function(){
+        $("#signupModal").modal();
+    });
+  })
 }]);

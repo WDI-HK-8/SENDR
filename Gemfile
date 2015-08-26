@@ -12,6 +12,7 @@ gem 'bower'
 gem 'devise_token_auth'
 gem 'omniauth'
 gem 'dotenv-rails', :groups => [:development, :test]
+gem 'sass'
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'active_hash'
 

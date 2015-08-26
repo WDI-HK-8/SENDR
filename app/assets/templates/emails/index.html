@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row">
+    <div ng-repeat="email in emails track by $index">
+      <div class="page-header">
+        {{ email.title }}
+        {{ email.from }}
+        {{ email.to }}
+        {{ email.schedule }}
+        {{ email.content }}
+        {{ email.is_sent }}
+        {{ email.visible }}
+        <small>
+          {{ email.created_at | date }}
+        </small>
+      </div>
+    </div>
+  </div>
+</div>

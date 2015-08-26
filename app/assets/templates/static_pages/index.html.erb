@@ -99,6 +99,9 @@
 	      <div class="form-group">
 	        <input type="password" class="form-control input-underline input-lg" name="password" ng-model="loginForm.password" required="required" class="form-control" placeholder="Enter Password"/>
 	      </div>
+				<!-- <div class="alert alert-danger">
+				  <b>Incorrect username/password</b>
+				</div> -->
 	      <button type="submit" class="btn btn-primary btn-lg">Login</button>
 				<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#signupModal">Not a member? Sign up</button>
 	    </form>
@@ -120,7 +123,7 @@
         <h4 class="modal-title" id="myModalLabel">Sign up</h4>
       </div>
       <div class="modal-body">
-				<div class="container">
+				<div class="container" id="modalBody">
 				  <div class="row">
 				    <form ng-submit="signup()" role="form" ng-init="registrationForm = {}">
 				      <div class="form-group">

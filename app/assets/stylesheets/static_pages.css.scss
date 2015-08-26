@@ -4,14 +4,14 @@
 */
 
 body {
-  // background-image: url("https://www.petfinder.com/wp-content/uploads/2012/11/122163343-conditioning-dog-loud-noises-632x475.jpg")
+  background-color: #add8e6
 }
-
-.loginModal h2 {
+#mainBody {
+  margin: 0;
+  position: absolute;
+  top: 50%;
   left: 50%;
   margin-right: -50%;
-}
-
-h1 ,h2 {
-  // color: white;
+  transform: translate(-50%, -50%);
+  text-align: center
 }

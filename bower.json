@@ -4,7 +4,7 @@
   "dependencies": {
     "angular": "~1.4.4",
     "angular-route": "~1.4.4",
-    "ng-token-auth": "~0.0.28"
+    "ng-token-auth": "~0.0.28",
     "angular-background": "~1.0.0",
     "bootstrap": "~3.3.5",
     "eonasdan-bootstrap-datetimepicker": "~4.15.35"

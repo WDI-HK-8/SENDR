@@ -17,4 +17,13 @@
 //= require angular-cookie/angular-cookie
 //= require jquery/dist/jquery 
 //= require bootstrap/dist/js/bootstrap
+//= require jquery/dist/jquery.min.js
+//= require moment/min/moment.min.js
+//= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js
+//= require textAngular/dist/textAngular-rangy.min.js
+//= require textAngular/dist/textAngular-sanitize.min.js
+//= require textAngular/dist/textAngular.min.js
+//= require angular-bootstrap-datetimepicker/src/js/datetimepicker.js
 //= require_tree .
+
+

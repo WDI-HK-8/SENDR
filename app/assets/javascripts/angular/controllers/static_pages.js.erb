@@ -1,19 +1,33 @@
-app.controller('StaticPagesCtrl', ['$scope', '$auth', function($scope, $auth){
-  $scope.message = "Hello World!";
-  $scope.logout = function () {
-    $auth.signOut().then(function(resp) {
-      console.log(resp);
-    }).catch(function(resp) {
-      console.log(resp);
-    });
+app.controller('StaticPagesCtrl', ['$scope', '$auth', '$location', function($scope, $auth, $location){
+  $scope.authData = $auth.validateUser();
+
+  if ($scope.authData.$$state.status == 1) {
+    $location.path('/new_emails')
+  }
+
+  $scope.login = function () {
+    $auth.submitLogin($scope.loginForm).
+     then(function(resp) {
+       // handle success response
+       console.log(resp);
+       location.reload();
+     }).
+     catch(function(resp) {
+       console.log(resp);
+     });
   };
-  $(document).ready(function(){
-    //login modal
-    $("#myBtn").click(function(){
-        $("#myModal").modal();
-    });
-    $("#signupBtn").click(function(){
-        $("#signupModal").modal();
-    });
-  })
+
+  $scope.signup = function () {
+    $auth.submitRegistration($scope.registrationForm).
+     then(function(resp) {
+       // handle success response
+       console.log(resp);
+
+     }).
+     catch(function(resp) {
+       // handle error response
+       console.log(resp);
+     });
+  };
+
 }]);

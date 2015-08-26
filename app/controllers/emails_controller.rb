@@ -10,7 +10,10 @@ class EmailsController < ApplicationController
     @email = current_user.emails.new(hash)
 
     if @email.save
-      MainMailer.send_email(@email).deliver_now
+      if hash[:schedule] == 'now'
+        MainMailer.send_email(@email).deliver_now
+        @email.update({:is_sent => true})
+      end
     else
       render json: { message: "400 Bad Request" }, status: :bad_request
     end
@@ -22,7 +25,11 @@ class EmailsController < ApplicationController
     if @email.nil?
       render json: { message: "Cannot find email" }, status: :not_found
     else
-      @email.update(post_params)
+      if @email.is_sent
+        render json: { message: "Email has already been sent" }, status: :bad_request
+      else
+        @email.update(post_params)
+      end
     end
   end
 

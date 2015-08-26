@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20150824120512) do
     t.string   "to"
     t.datetime "schedule"
     t.text     "content"
-    t.boolean  "is_sent"
+    t.boolean  "is_sent",    default: false
     t.boolean  "visible"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "user_id"
   end
 

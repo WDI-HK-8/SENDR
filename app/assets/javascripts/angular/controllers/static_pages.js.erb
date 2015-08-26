@@ -2,7 +2,7 @@ app.controller('StaticPagesCtrl', ['$scope', '$auth', '$location', function($sco
   $scope.authData = $auth.validateUser();
 
   if ($scope.authData.$$state.status == 1) {
-    $location.path('/new_emails')
+    $location.path('/login')
   }
 
   $scope.login = function () {

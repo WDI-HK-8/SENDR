@@ -1,19 +1,34 @@
-app.controller('LoginCtrl', ['$scope', '$auth', '$location', function($scope, $auth, $location){
-  $scope.login = function () {
-    $auth.submitLogin($scope.loginForm).
-     then(function(resp) {
-       // handle success response
-       console.log(resp);
+app.controller('LoginCtrl', ['$scope', '$auth', '$location', '$http', function($scope, $auth, $location, $http){
 
-       // redirect back to root when registration succesfull
-       $location.path('/');
-     }).
-     catch(function(resp) {
-       // handle error response
-       console.log(resp);
-     });
+  $scope.authData = $auth.validateUser();
+  console.log($scope.authData.$$state.status);
 
 
+  if ($scope.authData.$$state.status == 2) {
+    $location.path('/')
+  }
 
+  var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
+  $scope.email = {};
+  $scope.form = {};
+
+  $scope.form.create = function(){
+    var data = {
+      email: $scope.email
+    };
+
+    $http.post(url + '/emails', data).success(function(response){
+      console.log(response);
+    });
   };
+
+  $scope.logout = function () {
+    $auth.signOut().then(function(resp) {
+      console.log(resp);
+      location.reload();
+    }).catch(function(resp) {
+      console.log(resp);
+    });
+  };
+
 }])

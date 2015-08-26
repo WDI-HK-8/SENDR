@@ -13,11 +13,10 @@
 
 
  *= require_self
- *= require bootstrap/dist/css/bootstrap
+ *= require bootstrap/dist/css/bootstrap.css
  *= require eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css
  *= require textAngular/dist/textAngular.css
- *= angular-bootstrap-datetimepicker/src/css/datetimepicker
+ *= require angular-bootstrap-datetimepicker/src/css/datetimepicker
 
  *= require_tree .
  */
-

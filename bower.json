@@ -10,5 +10,8 @@
     "eonasdan-bootstrap-datetimepicker": "~4.15.35",
     "textAngular": "~1.4.3",
     "angular-bootstrap-datetimepicker": "latest"
+  },
+  "resolutions": {
+    "angular": "1.4.4"
   }
 }

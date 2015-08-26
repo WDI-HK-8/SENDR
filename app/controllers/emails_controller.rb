@@ -25,7 +25,11 @@ class EmailsController < ApplicationController
     if @email.nil?
       render json: { message: "Cannot find email" }, status: :not_found
     else
-      @email.update(post_params)
+      if @email.is_sent
+        render json: { message: "Email has already been sent" }, status: :bad_request
+      else
+        @email.update(post_params)
+      end
     end
   end
 

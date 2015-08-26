@@ -1,5 +1,4 @@
 app.controller('StaticPagesCtrl', ['$scope', '$auth', function($scope, $auth){
-  $scope.message = "Hello World!";
   $scope.logout = function () {
     $auth.signOut().then(function(resp) {
       console.log(resp);
@@ -7,13 +6,33 @@ app.controller('StaticPagesCtrl', ['$scope', '$auth', function($scope, $auth){
       console.log(resp);
     });
   };
-  $(document).ready(function(){
-    //login modal
-    $("#myBtn").click(function(){
-        $("#myModal").modal();
-    });
-    $("#signupBtn").click(function(){
-        $("#signupModal").modal();
-    });
-  })
+
+  $scope.login = function () {
+    $auth.submitLogin($scope.loginForm).
+     then(function(resp) {
+       // handle success response
+       console.log(resp);
+
+     }).
+     catch(function(resp) {
+       // handle error response
+       console.log(resp);
+     });
+  };
+
+  $scope.signup = function () {
+    $auth.submitRegistration($scope.registrationForm).
+     then(function(resp) {
+       // handle success response
+       console.log(resp);
+
+       // redirect back to root when registration succesfull
+       $location.path('/');
+     }).
+     catch(function(resp) {
+       // handle error response
+       console.log(resp);
+     });
+  };
+
 }]);

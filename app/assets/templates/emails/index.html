@@ -36,6 +36,7 @@
             <th class="col-md-1">Date</th>
             <th class="col-md-1">To</th>
             <th class="col-md-1">Title</th>
+            <th class="col-md-1">Content</th>
           </tr>
         </thead>
         <tbody>
@@ -43,6 +44,14 @@
             <td>{{ email.created_at | date }}</td>
             <td>{{ email.to }}</td>
             <td>{{ email.title }}</td>
+            <td> 
+              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{ email.id }}" aria-expanded="false" aria-controls="collapseExample">
+                Open 
+              </button>
+              <div class="collapse" id="{{ email.id }}">
+                <div class="well">{{ email.content }}</div>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>

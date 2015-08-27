@@ -1,4 +1,4 @@
-app.controller('EmailsLogCtrl', ['$scope', '$http', '$location', function($scope, $http, $location){
+app.controller('EmailsLogCtrl', ['$scope', '$http', '$location', '$auth', function($scope, $http, $location, $auth){
 
   var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
@@ -6,4 +6,20 @@ app.controller('EmailsLogCtrl', ['$scope', '$http', '$location', function($scope
     console.log(response);
     $scope.emails = response;
   });
+
+  $scope.logout = function () {
+    $auth.signOut().then(function(resp) {
+      console.log(resp);
+      location.reload();
+    }).catch(function(resp) {
+      console.log(resp);
+    });
+  };
+
+  $scope.delete = function (id) {
+      $http.delete(url + '/emails/' + id).success(function(response){
+      console.log(response)
+      location.reload();
+    });
+  };
 }]);

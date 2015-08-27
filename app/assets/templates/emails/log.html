@@ -29,11 +29,11 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-9">
-      <h2>Check your outbox</h2>
+      <h1>Sent emails</h1>
       <table class="table table-hover">
         <thead>
           <tr class="list" >
-            <th class="col-md-1">Date</th>
+            <th class="col-md-1">Schedule</th>
             <th class="col-md-1">To</th>
             <th class="col-md-1">Title</th>
             <th class="col-md-1">Content</th>
@@ -41,15 +41,47 @@
         </thead>
         <tbody>
           <tr ng-repeat="email in emails track by $index">
-            <td>{{ email.created_at | date }}</td>
+            <td>{{ email.schedule | date : 'short'}}</td>
             <td>{{ email.to }}</td>
             <td>{{ email.title }}</td>
-            <td> 
-              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{ email.id }}" aria-expanded="false" aria-controls="collapseExample">
-                Open 
-              </button>
-              <div class="collapse" id="{{ email.id }}">
-                <div class="well">{{ email.content }}</div>
+            <td>
+              <button type="btn btn-primary" class="btn btn-danger" data-toggle="modal" data-target="#{{ email.id }}">View</button>
+
+              <div class="modal fade" id="{{ email.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">View / Edit your emails</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="container" id="modalBody">
+                        <div class="row">
+                          <table style="width:100%">
+                            <tr>
+                              <th>To:</th>
+                              <td>{{ email.to }}</td>
+                            </tr>
+                            <tr>
+                              <th>Scheduled time:</th>
+                              <td>{{ email.schedule | date : 'short'}}</td>
+                            </tr>
+                            <tr>
+                              <th>Title:</th>
+                              <td>{{ email.title }}</td>
+                            </tr>
+                            <tr>
+                              <th>Content:</th>
+                              <td>{{ email.content }}</td>
+                            </tr>
+                          </table>
+                          <br>
+                          <button ng-click='delete(email.id)' class="btn btn-danger">Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </td>
           </tr>

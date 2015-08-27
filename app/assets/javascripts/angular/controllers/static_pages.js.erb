@@ -10,7 +10,7 @@ app.controller('StaticPagesCtrl', ['$scope', '$auth', '$location', function($sco
      then(function(resp) {
        // handle success response
        console.log(resp);
-       location.reload();
+       $location.path('/login')
      }).
      catch(function(resp) {
        console.log(resp);

@@ -14,13 +14,14 @@ app.controller('StaticPagesCtrl', ['$scope', '$auth', '$location', function($sco
      }).
      catch(function(resp) {
        console.log(resp);
+       $scope.incorrect = true
      });
   };
 
   $scope.signup = function () {
     $auth.submitRegistration($scope.registrationForm).
      then(function(resp) {
-       // handle success response
+       $scope.confirm = true
        console.log(resp);
 
      }).

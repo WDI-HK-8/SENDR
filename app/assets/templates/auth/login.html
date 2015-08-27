@@ -1,85 +1,98 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-<div class="container">
-  <div class="row">
-
-    <div class="nav-side-menu">
-      <div class="brand">Sendr</div>
-      <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-      
-      <div class="menu-list">
-      
-        <ul id="menu-content" class="menu-content collapse out">
-          <li>
-            <i class="fa fa-dashboard fa-lg"></i> Dashboard
-          </li>
-
-          <li  data-toggle="collapse" data-target="#products" class="collapsed active">
-            <a href="#"><i class="fa fa-gift fa-lg"></i> Email <span class="arrow"></span></a>
-          </li>
-        </ul>
-        <ul class="sub-menu collapse" id="products">
-          <li class="active"><a href="#">Sent</a></li>
-          <li><a href="#">Scheduled</a></li>
-        </ul>
-        <ul>
-          <li>
-            <a href="#">
-              <i class="fa fa-user fa-lg"></i> Contacts
-            </a>
-          </li>
-
-           <li>
-            <a href="#">
-            <i class="fa fa-users fa-lg"></i> Profile
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- /#page-content-wrapper -->
-
-    <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-8">
-         <h2>Write your email</h2>
-
-          <div class="form-group">
-            <label for="sendto">Send To:</label>
-            <input type="text" class="form-control" id="sendto">
-          </div>
-
-          <div class="form-group">
-            <label for="datetime">Email will be sent at</label>
-            <div class="dropdown">
-                <a class="dropdown-toggle my-toggle-select" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
-                    <div class="input-append"><input type="text" class="input-large" data-ng-model="data.date"><span class="add-on"><i
-                            class="icon-calendar"></i></span>
-                    </div>
-                </a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <datetimepicker data-ng-model="data.date"
-                                    data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
-                </ul>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" id="title">
-          </div>
-
-          <div text-angular ng-model="htmlVariable">textAngular</div>
-          <br>
-          <div class="form-group">
-            <label for="visible">Do you wanna check it in your email history?</label>
-            <select class="form-control" id="visible">
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-          </div>
-      </div>
-    </div>
-
+<div class="nav-side-menu">
+  <div class="brand">Sendr</div>
+  <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  <div class="menu-list">
+    <ul id="menu-content" class="menu-content collapse out">
+      <li  data-toggle="collapse" class="collapsed active">
+        <a href="/login"><i class="fa fa-paper-plane fa-lg"></i>New email</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-calendar fa-lg"></i>Scheduled emails</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-history fa-lg"></i>History</a>
+      </li>
+      <li>
+        <a href="#" ng-click="logout()"><i class="fa fa-sign-out fa-lg" ></i>Logout</a>
+      </li>
+    </ul>
   </div>
 </div>
+
+
+<div id="inputFields">
+  <div class="row">
+    <div class="col-xs-8">
+      <h1>Write your email</h1>
+
+      <form ng-submit="form.create()">
+        <div class="form-group">
+          <label for="sendto">Send To:</label>
+          <input type="text" class="form-control" ng-model="email.to">
+        </div>
+        <div class="form-group">
+          <label for="datetime">Email will be sent at</label>
+          <div class="dropdown">
+              <a class="dropdown-toggle my-toggle-select" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
+                  <div class="input-append">
+                    <input type="text" class="form-control" ng-model="email.schedule">
+                    <span class="add-on">
+                      <i class="icon-calendar"></i>
+                    </span>
+                  </div>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                  <datetimepicker ng-model="email.schedule" data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
+              </ul>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" ng-model="email.title">
+        </div>
+
+        <div text-angular ng-model="email.content"></div>
+
+        <div class="checkbox">
+          <label><input type="checkbox" value="" ng-model="email.visible">Do you wanna include this in your email history?</label>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="container">
+  <div class="row">
+    <h1>Create A New Email</h1>
+
+    <form ng-submit="form.create()">
+      <div class="form-group">
+        <label>To</label>
+        <input type="text" class="form-control" placeholder="Enter content" ng-model="email.to">
+      </div>
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" placeholder="Enter title" ng-model="email.title">
+      </div>
+      <div class="form-group">
+        <label>Content</label>
+        <input type="text" class="form-control" placeholder="Enter content" ng-model="email.content">
+      </div>
+      <div class="form-group">
+        <label>Schedule</label>
+        <input type="text" class="form-control" placeholder="Enter content" ng-model="email.schedule">
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" value="" ng-model="email.visible">Visible</label>
+      </div>
+
+      <button type="submit" class="btn btn-default">Submit</button>
+      <button class="btn btn-danger" ng-click="logout()">Logout</button>
+    </form>
+  </div>
+</div> -->

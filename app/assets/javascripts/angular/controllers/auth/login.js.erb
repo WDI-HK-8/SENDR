@@ -19,6 +19,7 @@ app.controller('LoginCtrl', ['$scope', '$auth', '$location', '$http', function($
 
     $http.post(url + '/emails', data).success(function(response){
       console.log(response);
+      $scope.scheduled = true
     });
   };
 

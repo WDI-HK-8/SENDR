@@ -18,6 +18,14 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
       templateUrl: "<%= asset_path('emails/index.html') %>",
       controller: 'EmailsIndexCtrl'
     }).
+    when('/scheduled', {
+      templateUrl: "<%= asset_path('emails/scheduled.html') %>",
+      controller: 'EmailsScheduledCtrl'
+    }).
+    when('/log', {
+      templateUrl: "<%= asset_path('emails/log.html') %>",
+      controller: 'EmailsLogCtrl'
+    }).
     when('/new_emails', {
       templateUrl: "<%= asset_path('emails/new.html') %>",
       controller: 'EmailsNewCtrl'

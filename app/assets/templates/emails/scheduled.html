@@ -1,0 +1,60 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<div class="nav-side-menu">
+  <div class="brand">Sendr</div>
+  <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  <div class="menu-list">
+    <ul id="menu-content" class="menu-content collapse out">
+      <li>
+        <a href="#/login"><i class="fa fa-paper-plane fa-lg"></i>New email</a>
+      </li>
+      <li data-toggle="collapse" class="collapsed active">
+        <a href="#/scheduled"><i class="fa fa-calendar fa-lg"></i>Scheduled emails</a>
+      </li>
+      <li>
+        <a href="#/log"><i class="fa fa-history fa-lg"></i>History</a>
+      </li>
+      <li>
+        <a href="#" ng-click="logout()"><i class="fa fa-sign-out fa-lg" ></i>Logout</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+      <h2>Check your outbox</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr class="list" >
+            <th class="col-md-1">Date</th>
+            <th class="col-md-1">To</th>
+            <th class="col-md-1">Title</th>
+            <th class="col-md-1">Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="email in emails track by $index">
+            <td>{{ email.created_at | date }}</td>
+            <td>{{ email.to }}</td>
+            <td>{{ email.title }}</td>
+            <td> 
+              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{ email.id }}" aria-expanded="false" aria-controls="collapseExample">
+                Open 
+              </button>
+              <div class="collapse" id="{{ email.id }}">
+                <div class="well">{{ email.content }}</div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

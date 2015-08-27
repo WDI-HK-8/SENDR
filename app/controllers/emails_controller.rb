@@ -1,7 +1,16 @@
 class EmailsController < ApplicationController
   before_action :authenticate_user!
+
   def index
     @emails = current_user.emails.where(visible: true)
+  end
+
+  def scheduled
+    @emails = current_user.emails.where("visible = ? AND is_sent = ?", true, false)
+  end
+
+  def log
+    @emails = current_user.emails.where("visible = ? AND is_sent = ?", true, true)
   end
 
   def create
@@ -20,7 +29,7 @@ class EmailsController < ApplicationController
   end
 
   def update
-    @email = Email.find_by_id(params[:id])
+    @email = current_user.emails.find_by_id(params[:id])
 
     if @email.nil?
       render json: { message: "Cannot find email" }, status: :not_found
@@ -34,7 +43,7 @@ class EmailsController < ApplicationController
   end
 
   def show
-    @email = Email.find_by_id(params[:id])
+    @email = current_user.emails.find_by_id(params[:id])
 
     if @email.nil?
       render json: { message: "Cannot find email" }, status: :not_found
@@ -42,7 +51,7 @@ class EmailsController < ApplicationController
   end
 
   def destroy
-    @email = Email.find_by_id(params[:id])
+    @email = current_user.emails.find_by_id(params[:id])
 
     if @email.nil?
       render json: { message: "Cannot find email" }, status: :not_found
@@ -58,6 +67,6 @@ class EmailsController < ApplicationController
   private
 
   def post_params
-    params.require(:email).permit(:title, :to, :schedule, :content, :is_sent, :visible)
+    params.require(:email).permit(:title, :to, :schedule, :content, :visible)
   end
 end
